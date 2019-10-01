@@ -30,6 +30,6 @@
     <fragment
         android:id="@+id/autoComplitFragment"
         android:name="ru.polyakov.transferme.ui.autocomplit.AutoComplitFragment"
-        android:label="auto_complit_fragment"
+        android:label="Поиск"
         tools:layout="@layout/auto_complit_fragment" />
 </navigation>
