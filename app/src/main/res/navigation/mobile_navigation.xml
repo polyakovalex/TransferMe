@@ -26,14 +26,14 @@
         android:id="@+id/autoComplitFragment"
         android:name="ru.polyakov.transferme.ui.autocomplit.AutoComplitFragment"
         android:label="Поиск"
-        tools:layout="@layout/auto_complit_fragment" >
+        tools:layout="@layout/fragment_autocomplit" >
         <action
             android:id="@+id/action_autoComplitFragment_to_itemAutoComplitFragment"
             app:destination="@id/itemAutoComplitFragment" />
     </fragment>
     <fragment
         android:id="@+id/itemAutoComplitFragment"
-        android:name="ru.polyakov.transferme.ItemAutoComplitFragment"
+        android:name="ru.polyakov.transferme.listautocomplit.ItemAutoComplitFragment"
         android:label="fragment_itemautocomplit_list"
         tools:layout="@layout/fragment_itemautocomplit_list" />
 </navigation>

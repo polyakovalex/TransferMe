@@ -28,7 +28,7 @@ public class AutoComplitFragment extends Fragment implements SearchView.OnQueryT
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.auto_complit_fragment, container, false);
+        View root = inflater.inflate(R.layout.fragment_autocomplit, container, false);
 
         searchView = root.findViewById(R.id.sv_autocomplit);
         searchView.setOnQueryTextListener(this);

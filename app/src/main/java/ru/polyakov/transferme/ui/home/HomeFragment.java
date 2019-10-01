@@ -22,7 +22,6 @@ public class HomeFragment extends Fragment{
     private HomeViewModel homeViewModel;
     private EditText etFrom,etTo;
     private Button btSearch;
-    NavController navController;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
             ViewGroup container, Bundle savedInstanceState) {
@@ -44,14 +43,4 @@ public class HomeFragment extends Fragment{
         return root;
     }
 
-   /* @Override
-    public void onClick(View v) {
-        switch(v.getId()){
-            case R.id.et_from:
-               // Navigation.findNavController(v).navigate(R.id.autoComplitFragment);
-                break;
-        }
-
-
-    }*/
 }
