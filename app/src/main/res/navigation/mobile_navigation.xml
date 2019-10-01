@@ -22,4 +22,15 @@
         android:name="ru.polyakov.transferme.ui.notifications.NotificationsFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_notifications" />
+    <fragment
+        android:id="@+id/autoComplitFragment"
+        android:name="ru.polyakov.transferme.ui.autocomplit.AutoComplitFragment"
+        android:label="auto_complit_fragment"
+        tools:layout="@layout/auto_complit_fragment"
+        >
+        <action
+            android:id="@+id/action_autoComplitFragment_to_navigation_home"
+            app:destination="@id/navigation_home" />
+
+    </fragment>
 </navigation>

@@ -3,4 +3,10 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+
+    <string name="et_from">Откуда</string>
+    <string name="et_to">Куда</string>
+    <string name="bt_search">Найти</string>
+
+
 </resources>
