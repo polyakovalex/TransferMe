@@ -1,5 +1,6 @@
 package ru.polyakov.transferme.ui.autocomplit;
 
+import androidx.appcompat.widget.SearchView;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.os.Bundle;
@@ -17,9 +18,10 @@ import android.view.ViewGroup;
 
 import ru.polyakov.transferme.R;
 
-public class AutoComplitFragment extends Fragment {
+public class AutoComplitFragment extends Fragment implements SearchView.OnQueryTextListener{
 
     private AutoComplitViewModel mViewModel;
+    SearchView searchView;
 
     public static AutoComplitFragment newInstance() {
         return new AutoComplitFragment();
@@ -29,8 +31,7 @@ public class AutoComplitFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.auto_complit_fragment, container, false);
-      /*  NavController navController = Navigation.findNavController(root, R.id.autoComplitFragment);
-        NavigationUI.setupActionBarWithNavController(root, navController);*/
+
 
         return root;
     }
@@ -43,4 +44,13 @@ public class AutoComplitFragment extends Fragment {
     }
 
 
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String newText) {
+        return false;
+    }
 }
