@@ -1,7 +1,6 @@
 package ru.polyakov.transferme.adapter;
 
 import android.content.Context;
-import android.graphics.Point;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,14 +12,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import ru.polyakov.transferme.R;
+import ru.polyakov.transferme.network.dto.PointsLocal;
 
 public class AdapterAutoComplit extends RecyclerView.Adapter<AdapterAutoComplit.MyViewHolderAutoComplit> {
 
-    private List<Point> points;
+    private List<PointsLocal> pointsLocals;
     private Context context;
 
-    public AdapterAutoComplit(List<Point> points, Context context) {
-        this.points = points;
+    public AdapterAutoComplit(List<PointsLocal> pointsLocals, Context context) {
+        this.pointsLocals = pointsLocals;
         this.context = context;
     }
 
@@ -34,12 +34,12 @@ public class AdapterAutoComplit extends RecyclerView.Adapter<AdapterAutoComplit.
     @Override
     public void onBindViewHolder(MyViewHolderAutoComplit holder, int position) {
 
-       // holder.tvName.setText(points.get(position).getName());
+        holder.tvName.setText(pointsLocals.get(position).getName());
     }
 
     @Override
     public int getItemCount() {
-        return points.size();
+        return pointsLocals.size();
     }
 
     public static class MyViewHolderAutoComplit extends RecyclerView.ViewHolder{
