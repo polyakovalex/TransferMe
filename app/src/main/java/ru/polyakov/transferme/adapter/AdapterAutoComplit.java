@@ -6,21 +6,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
 import ru.polyakov.transferme.R;
-import ru.polyakov.transferme.network.dto.PointsLocal;
+import ru.polyakov.transferme.network.dto.PrepareQuery;
 
 public class AdapterAutoComplit extends RecyclerView.Adapter<AdapterAutoComplit.MyViewHolderAutoComplit> {
 
-    private List<PointsLocal> pointsLocals;
+    private List<PrepareQuery> prepareQueries;
     private Context context;
 
-    public AdapterAutoComplit(List<PointsLocal> pointsLocals, Context context) {
-        this.pointsLocals = pointsLocals;
+    public AdapterAutoComplit(List<PrepareQuery> pointsLocals, Context context) {
+        this.prepareQueries = prepareQueries;
         this.context = context;
     }
 
@@ -34,12 +33,12 @@ public class AdapterAutoComplit extends RecyclerView.Adapter<AdapterAutoComplit.
     @Override
     public void onBindViewHolder(MyViewHolderAutoComplit holder, int position) {
 
-        holder.tvName.setText(pointsLocals.get(position).getName());
+        holder.tvName.setText(prepareQueries.get(position).getSuggestions().get(position).getName());
     }
 
     @Override
     public int getItemCount() {
-        return pointsLocals.size();
+        return prepareQueries.size();
     }
 
     public static class MyViewHolderAutoComplit extends RecyclerView.ViewHolder{

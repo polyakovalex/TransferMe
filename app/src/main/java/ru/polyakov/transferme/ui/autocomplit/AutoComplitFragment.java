@@ -14,7 +14,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
 import android.widget.ProgressBar;
 import android.widget.SearchView;
 import android.widget.Toast;
@@ -24,12 +23,11 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import ru.polyakov.transferme.MainActivity;
 import ru.polyakov.transferme.R;
 import ru.polyakov.transferme.adapter.AdapterAutoComplit;
 import ru.polyakov.transferme.network.RequestApi;
 import ru.polyakov.transferme.network.RequestAutocomplit;
-import ru.polyakov.transferme.network.dto.PointsLocal;
+import ru.polyakov.transferme.network.dto.PrepareQuery;
 
 public class AutoComplitFragment extends Fragment implements SearchView.OnQueryTextListener {
 
@@ -37,7 +35,7 @@ public class AutoComplitFragment extends Fragment implements SearchView.OnQueryT
     private SearchView searchView;
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
-    private List<PointsLocal> pointsLocalList;
+    private List<PrepareQuery> prepareQueries;
     private AdapterAutoComplit adapterAutoComplit;
     private RequestApi requestApi;
     ProgressBar progressBar;
@@ -84,14 +82,14 @@ public class AutoComplitFragment extends Fragment implements SearchView.OnQueryT
 
     public void fetchPointLocation(){
         requestApi = RequestAutocomplit.getAutoComplit().create(RequestApi.class);
-        Call<List<PointsLocal>> call = requestApi.listRepos();
+        Call<List<PrepareQuery>> call = requestApi.listRepos();
 
-        call.enqueue(new Callback<List<PointsLocal>>() {
+        call.enqueue(new Callback<List<PrepareQuery>>() {
             @Override
-            public void onResponse(Call<List<PointsLocal>> call, Response<List<PointsLocal>> response) {
+            public void onResponse(Call<List<PrepareQuery>> call, Response<List<PrepareQuery>> response) {
                 progressBar.setVisibility(View.GONE);
-                pointsLocalList = response.body();
-                adapterAutoComplit = new AdapterAutoComplit(pointsLocalList, getActivity().getApplicationContext());
+                prepareQueries = response.body();
+                adapterAutoComplit = new AdapterAutoComplit(prepareQueries, getActivity().getApplicationContext());
                 recyclerView.setAdapter(adapterAutoComplit);
                 adapterAutoComplit.notifyDataSetChanged();
 
@@ -99,7 +97,7 @@ public class AutoComplitFragment extends Fragment implements SearchView.OnQueryT
             }
 
             @Override
-            public void onFailure(Call<List<PointsLocal>> call, Throwable t) {
+            public void onFailure(Call<List<PrepareQuery>> call, Throwable t) {
                 progressBar.setVisibility(View.GONE);
                 Toast.makeText(getActivity().getApplicationContext(),"Error request "+t.toString(),Toast.LENGTH_LONG).show();
             }
