@@ -1,6 +1,5 @@
 package ru.polyakov.transferme.ui.autocomplit;
 
-import androidx.appcompat.widget.SearchView;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.os.Bundle;
@@ -8,17 +7,16 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.NavigationUI;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SearchView;
 
 import ru.polyakov.transferme.R;
 
-public class AutoComplitFragment extends Fragment implements SearchView.OnQueryTextListener{
+public class AutoComplitFragment extends Fragment implements SearchView.OnQueryTextListener {
 
     private AutoComplitViewModel mViewModel;
     SearchView searchView;
@@ -32,6 +30,8 @@ public class AutoComplitFragment extends Fragment implements SearchView.OnQueryT
                              @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.auto_complit_fragment, container, false);
 
+        searchView = root.findViewById(R.id.sv_autocomplit);
+        searchView.setOnQueryTextListener(this);
 
         return root;
     }
@@ -43,7 +43,6 @@ public class AutoComplitFragment extends Fragment implements SearchView.OnQueryT
         // TODO: Use the ViewModel
     }
 
-
     @Override
     public boolean onQueryTextSubmit(String query) {
         return false;
@@ -51,6 +50,7 @@ public class AutoComplitFragment extends Fragment implements SearchView.OnQueryT
 
     @Override
     public boolean onQueryTextChange(String newText) {
+        Log.d("sdf","sdf");
         return false;
     }
 }
