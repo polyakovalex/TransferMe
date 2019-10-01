@@ -31,7 +31,18 @@ public class HomeFragment extends Fragment{
        // navController = Navigation.findNavController(root);
 
         etFrom = root.findViewById(R.id.et_from);
-        etFrom.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.autoComplitFragment));
+        //button.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.next_fragment, null));
+
+        etFrom.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Navigation.findNavController(view).navigate(R.id.action_navigation_home_to_autoComplitFragment4);
+            }
+        });
+
+        //etFrom.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.autoComplitFragment));
+
+        //Navigation.findNavController(view).navigate(R.id.viewTransactionsAction);
 
        /* final TextView textView = root.findViewById(R.id.text_home);
         homeViewModel.getText().observe(this, new Observer<String>() {

@@ -7,6 +7,9 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.NavigationUI;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,7 +28,11 @@ public class AutoComplitFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.auto_complit_fragment, container, false);
+        View root = inflater.inflate(R.layout.auto_complit_fragment, container, false);
+      /*  NavController navController = Navigation.findNavController(root, R.id.autoComplitFragment);
+        NavigationUI.setupActionBarWithNavController(root, navController);*/
+
+        return root;
     }
 
     @Override
@@ -34,5 +41,6 @@ public class AutoComplitFragment extends Fragment {
         mViewModel = ViewModelProviders.of(this).get(AutoComplitViewModel.class);
         // TODO: Use the ViewModel
     }
+
 
 }

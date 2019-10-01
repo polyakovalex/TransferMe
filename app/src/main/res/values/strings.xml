@@ -8,5 +8,9 @@
     <string name="et_to">Куда</string>
     <string name="bt_search">Найти</string>
 
+    <string name="fr_title_home">Поиск трансфера</string>
+    <string name="fr_title_setting">Настройки</string>
+    <!--<string name="fr_title_autocomplit">Найти</string>-->
+
 
 </resources>
