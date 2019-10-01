@@ -9,12 +9,7 @@
         android:id="@+id/navigation_home"
         android:name="ru.polyakov.transferme.ui.home.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" >
-        <action
-            android:id="@+id/action_navigation_home_to_autoComplitFragment4"
-            app:destination="@id/autoComplitFragment"
-            app:popUpTo="@+id/navigation_home" />
-    </fragment>
+        tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/navigation_dashboard"
@@ -31,5 +26,14 @@
         android:id="@+id/autoComplitFragment"
         android:name="ru.polyakov.transferme.ui.autocomplit.AutoComplitFragment"
         android:label="Поиск"
-        tools:layout="@layout/auto_complit_fragment" />
+        tools:layout="@layout/auto_complit_fragment" >
+        <action
+            android:id="@+id/action_autoComplitFragment_to_itemAutoComplitFragment"
+            app:destination="@id/itemAutoComplitFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/itemAutoComplitFragment"
+        android:name="ru.polyakov.transferme.ItemAutoComplitFragment"
+        android:label="fragment_itemautocomplit_list"
+        tools:layout="@layout/fragment_itemautocomplit_list" />
 </navigation>
