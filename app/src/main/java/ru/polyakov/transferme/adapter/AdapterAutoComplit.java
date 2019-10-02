@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import ru.polyakov.transferme.R;
-import ru.polyakov.transferme.network.dto.PrepareQuery;
 import ru.polyakov.transferme.network.dto.Suggestion;
 
 public class AdapterAutoComplit extends RecyclerView.Adapter<AdapterAutoComplit.MyViewHolderAutoComplit> {
@@ -27,7 +26,7 @@ public class AdapterAutoComplit extends RecyclerView.Adapter<AdapterAutoComplit.
 
     @Override
     public MyViewHolderAutoComplit onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_autocomplit,parent,false);
         return new MyViewHolderAutoComplit(view);
     }
 

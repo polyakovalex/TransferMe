@@ -2,6 +2,7 @@ package ru.polyakov.transferme.ui.autocomplit;
 
 import androidx.lifecycle.ViewModelProviders;
 
+import android.app.SearchManager;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -41,6 +42,9 @@ public class AutoComplitFragment extends Fragment implements SearchView.OnQueryT
     private AdapterAutoComplit adapterAutoComplit;
     private RequestApi requestApi;
     ProgressBar progressBar;
+    private String query = "Мос";
+    private String v = "V";
+    private SearchManager searchManager;
 
     public static AutoComplitFragment newInstance() {
         return new AutoComplitFragment();
@@ -59,7 +63,13 @@ public class AutoComplitFragment extends Fragment implements SearchView.OnQueryT
 
         searchView = root.findViewById(R.id.sv_autocomplit);
         searchView.setOnQueryTextListener(this);
-        fetchPointLocation();
+        //fetchPointLocation(query,v);
+
+        searchManager = (SearchManager) getActivity().getSystemService(getActivity().getApplicationContext().SEARCH_SERVICE);
+        searchView = root.findViewById(R.id.sv_autocomplit);
+        searchView.setIconifiedByDefault(false);
+        searchView.setSearchableInfo(searchManager.getSearchableInfo(getActivity().getComponentName()));
+        searchView.setOnQueryTextListener(this);
 
         return root;
     }
@@ -73,18 +83,21 @@ public class AutoComplitFragment extends Fragment implements SearchView.OnQueryT
 
     @Override
     public boolean onQueryTextSubmit(String query) {
+        Log.d("onQueryTextSubmit",query);
+        fetchSuggestion(query,v);
         return false;
     }
 
     @Override
     public boolean onQueryTextChange(String newText) {
-        Log.d("sdf","sdf");
+        Log.d("onQueryTextChange",newText);
+        fetchSuggestion(newText,v);
         return false;
     }
 
-    public void fetchPointLocation(){
+    public void fetchSuggestion(String query,String v){
         requestApi = RequestAutocomplit.getAutoComplit().create(RequestApi.class);
-        Call<PrepareQuery> call = requestApi.listRepos();
+        Call<PrepareQuery> call = requestApi.listRepos(query,v);
 
         call.enqueue(new Callback<PrepareQuery>() {
             @Override
