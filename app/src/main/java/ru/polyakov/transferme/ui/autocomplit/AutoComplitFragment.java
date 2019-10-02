@@ -28,6 +28,7 @@ import ru.polyakov.transferme.adapter.AdapterAutoComplit;
 import ru.polyakov.transferme.network.RequestApi;
 import ru.polyakov.transferme.network.RequestAutocomplit;
 import ru.polyakov.transferme.network.dto.PrepareQuery;
+import ru.polyakov.transferme.network.dto.Suggestion;
 
 public class AutoComplitFragment extends Fragment implements SearchView.OnQueryTextListener {
 
@@ -35,7 +36,8 @@ public class AutoComplitFragment extends Fragment implements SearchView.OnQueryT
     private SearchView searchView;
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
-    private List<PrepareQuery> prepareQueries;
+    private PrepareQuery prepareQuery;
+    private List<Suggestion> suggestions;
     private AdapterAutoComplit adapterAutoComplit;
     private RequestApi requestApi;
     ProgressBar progressBar;
@@ -82,14 +84,15 @@ public class AutoComplitFragment extends Fragment implements SearchView.OnQueryT
 
     public void fetchPointLocation(){
         requestApi = RequestAutocomplit.getAutoComplit().create(RequestApi.class);
-        Call<List<PrepareQuery>> call = requestApi.listRepos();
+        Call<PrepareQuery> call = requestApi.listRepos();
 
-        call.enqueue(new Callback<List<PrepareQuery>>() {
+        call.enqueue(new Callback<PrepareQuery>() {
             @Override
-            public void onResponse(Call<List<PrepareQuery>> call, Response<List<PrepareQuery>> response) {
+            public void onResponse(Call<PrepareQuery> call, Response<PrepareQuery> response) {
                 progressBar.setVisibility(View.GONE);
-                prepareQueries = response.body();
-                adapterAutoComplit = new AdapterAutoComplit(prepareQueries, getActivity().getApplicationContext());
+                prepareQuery = response.body();
+                suggestions = prepareQuery.getSuggestions();
+                adapterAutoComplit = new AdapterAutoComplit(suggestions, getActivity().getApplicationContext());
                 recyclerView.setAdapter(adapterAutoComplit);
                 adapterAutoComplit.notifyDataSetChanged();
 
@@ -97,7 +100,7 @@ public class AutoComplitFragment extends Fragment implements SearchView.OnQueryT
             }
 
             @Override
-            public void onFailure(Call<List<PrepareQuery>> call, Throwable t) {
+            public void onFailure(Call<PrepareQuery> call, Throwable t) {
                 progressBar.setVisibility(View.GONE);
                 Toast.makeText(getActivity().getApplicationContext(),"Error request "+t.toString(),Toast.LENGTH_LONG).show();
             }

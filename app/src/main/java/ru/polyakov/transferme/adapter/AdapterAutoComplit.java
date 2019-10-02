@@ -12,14 +12,15 @@ import java.util.List;
 
 import ru.polyakov.transferme.R;
 import ru.polyakov.transferme.network.dto.PrepareQuery;
+import ru.polyakov.transferme.network.dto.Suggestion;
 
 public class AdapterAutoComplit extends RecyclerView.Adapter<AdapterAutoComplit.MyViewHolderAutoComplit> {
 
-    private List<PrepareQuery> prepareQueries;
+    private List<Suggestion> suggestions;
     private Context context;
 
-    public AdapterAutoComplit(List<PrepareQuery> pointsLocals, Context context) {
-        this.prepareQueries = prepareQueries;
+    public AdapterAutoComplit(List<Suggestion> suggestions, Context context) {
+        this.suggestions = suggestions;
         this.context = context;
     }
 
@@ -33,12 +34,14 @@ public class AdapterAutoComplit extends RecyclerView.Adapter<AdapterAutoComplit.
     @Override
     public void onBindViewHolder(MyViewHolderAutoComplit holder, int position) {
 
-        holder.tvName.setText(prepareQueries.get(position).getSuggestions().get(position).getName());
+        String name = suggestions.get(position).getName();
+
+        holder.tvName.setText(suggestions.get(position).getName());
     }
 
     @Override
     public int getItemCount() {
-        return prepareQueries.size();
+        return suggestions.size();
     }
 
     public static class MyViewHolderAutoComplit extends RecyclerView.ViewHolder{
