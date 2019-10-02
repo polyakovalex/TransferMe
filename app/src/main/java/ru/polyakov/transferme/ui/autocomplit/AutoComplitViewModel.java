@@ -13,6 +13,11 @@ public class AutoComplitViewModel extends ViewModel {
         mText.setValue("This is home fragment");
     }
 
+    @Override
+    protected void onCleared() {
+        super.onCleared();
+    }
+
     public LiveData<String> getText() {
         return mText;
     }
