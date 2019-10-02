@@ -50,6 +50,18 @@ public class AutoComplitFragment extends Fragment implements SearchView.OnQueryT
         return new AutoComplitFragment();
     }
 
+
+    /*
+    @Override
+public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    FragmentTest binding = DataBindingUtil.inflate(inflater, R.layout.fragment_test, container, false);
+    Item item = new Item();
+    item.setName("Thomas");
+    binding.setItem(item);
+    return binding.getRoot();
+}
+    */
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
