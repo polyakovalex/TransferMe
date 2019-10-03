@@ -1,12 +1,24 @@
 package ru.polyakov.transferme.ui.autocomplit;
 
+import android.util.Log;
+
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class AutoComplitViewModel extends ViewModel {
+import ru.polyakov.transferme.ui.home.HomeViewModel;
 
-    private MutableLiveData<String> mText;
+public class AutoComplitViewModel extends ViewModel {
+    public AutoComplitViewModel() {
+    }
+
+
+    public void onClickComplit (HomeViewModel homeViewModel){
+
+        Log.d("df","dfdf");
+    }
+
+  /*  private MutableLiveData<String> mText;
 
     public AutoComplitViewModel() {
         mText = new MutableLiveData<>();
@@ -20,5 +32,5 @@ public class AutoComplitViewModel extends ViewModel {
 
     public LiveData<String> getText() {
         return mText;
-    }
+    }*/
 }

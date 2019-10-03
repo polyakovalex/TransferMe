@@ -4,9 +4,13 @@
     xmlns:android="http://schemas.android.com/apk/res/android" >
     <data>
         <import type="android.view.View"/>
+        <import type="android.text.TextUtils"/>
         <variable
             name="homeViewModel"
             type="ru.polyakov.transferme.ui.home.HomeViewModel" />
+        <variable
+            name="autoComplitViewModel"
+            type="ru.polyakov.transferme.ui.autocomplit.AutoComplitViewModel" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -15,6 +19,7 @@
 
 
         <EditText
+            android:id="@+id/et_from"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
@@ -23,13 +28,14 @@
             android:focusable="false"
             android:hint="@string/et_from"
             android:inputType="text"
-            android:text="@{homeViewModel.stateFrom}"
+            android:text="@={homeViewModel.stateFrom}"
             android:selectAllOnFocus="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
+            android:id="@+id/et_to"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
@@ -39,12 +45,12 @@
             android:hint="@string/et_to"
             android:inputType="text"
             android:text="@{homeViewModel.stateTo}"
-            android:selectAllOnFocus="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
+            android:id="@+id/et_adult_count"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
@@ -60,6 +66,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
+            android:id="@+id/bt_search"
             style="@style/AppTheme.MyButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -68,13 +75,14 @@
             android:layout_marginTop="300dp"
             android:layout_marginEnd="20dp"
             android:text="@string/bt_search"
-            android:enabled="false"
+            android:enabled="@{TextUtils.isEmpty(homeViewModel.stateFrom+homeViewModel.stateTo) ? false : true}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
 
-
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
+
+ <!--
+  @{TextUtils.isEmpty(employee.address) ? View.GONE : View.VISIBLE}
+-->
