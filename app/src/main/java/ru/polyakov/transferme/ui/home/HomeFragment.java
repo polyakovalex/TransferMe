@@ -43,19 +43,6 @@ public class HomeFragment extends Fragment{
         etFrom.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.autoComplitFragment));
         etTo.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.autoComplitFragment));
 
-
-/*
-        etFrom = root.findViewById(R.id.et_from);
-        etTo = root.findViewById(R.id.et_from);
-        etFrom.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.autoComplitFragment));
-        etTo.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.autoComplitFragment));*/
-
-        /*homeViewModel.getFrom().observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(String s) {
-                textView.setText(s);
-            }
-        });*/
         return view;
     }
 
