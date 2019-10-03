@@ -22,7 +22,6 @@ import ru.polyakov.transferme.databinding.FragmentHomeBinding;
 
 public class HomeFragment extends Fragment{
 
-    private HomeViewModel homeViewModel;
     FragmentHomeBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -30,8 +29,9 @@ public class HomeFragment extends Fragment{
 
         //homeViewModel = ViewModelProviders.of(this).get(HomeViewModel.class);
         binding = FragmentHomeBinding.inflate(inflater, container, false);
-        final TextView textView = binding.etFrom;
+        /*final TextView textView = binding.etFrom;*/
       //  DataBindingUtil.setContentView(binding.getRoot(), R.layout.fragment_home);
+
         View view = binding.getRoot();
 
 
@@ -41,12 +41,12 @@ public class HomeFragment extends Fragment{
         etFrom.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.autoComplitFragment));
         etTo.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.autoComplitFragment));*/
 
-        homeViewModel.getFrom().observe(this, new Observer<String>() {
+        /*homeViewModel.getFrom().observe(this, new Observer<String>() {
             @Override
             public void onChanged(String s) {
                 textView.setText(s);
             }
-        });
+        });*/
         return view;
     }
 

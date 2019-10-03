@@ -8,4 +8,24 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="AppTheme.MyButton" parent="Widget.AppCompat.Button.Colored">
+        <item name="backgroundTint">@color/color_states_materialbutton</item>
+    </style>
+
+   <!-- <style name="Theme.MyTheme" parent="Theme.AppCompat.Light">
+        &lt;!&ndash; colorPrimary is used for the default action bar background &ndash;&gt;
+        <item name="colorPrimary">@color/my_awesome_color</item>
+
+        &lt;!&ndash; colorPrimaryDark is used for the status bar &ndash;&gt;
+        <item name="colorPrimaryDark">@color/my_awesome_darker_color</item>
+
+        &lt;!&ndash; colorAccent is used as the default value for colorControlActivated,
+             which is used to tint widgets &ndash;&gt;
+        <item name="colorAccent">@color/accent</item>
+
+        &lt;!&ndash; You can also set colorControlNormal, colorControlActivated
+             colorControlHighlight, and colorSwitchThumbNormal. &ndash;&gt;
+
+    </style>-->
+
 </resources>

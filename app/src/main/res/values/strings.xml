@@ -6,6 +6,7 @@
 
     <string name="et_from">Откуда</string>
     <string name="et_to">Куда</string>
+    <string name="et_people_count">Пасажиры</string>
     <string name="bt_search">Найти</string>
 
     <string name="fr_title_home">Поиск трансфера</string>
