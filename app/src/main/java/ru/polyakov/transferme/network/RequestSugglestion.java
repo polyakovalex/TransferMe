@@ -22,18 +22,7 @@ public class RequestSugglestion {
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         OkHttpClient client = new OkHttpClient.Builder().addInterceptor(interceptor).build();
 
-        /*Gson gson = new GsonBuilder()
-                //.registerTypeAdapter(Id.class, new IdTypeAdapter())
-                //.enableComplexMapKeySerialization()
-                //.serializeNulls()
-                //.setDateFormat(DateFormat.LONG)
-                //.setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE)
-                //.setPrettyPrinting()
-                //.setVersion(1.0)
-                .create();*/
-
-
-        if(retrofit ==null){
+         if(retrofit ==null){
             retrofit = new Retrofit.Builder()
                     .baseUrl(Const.KIWI_TAXI_BASE_URL_AUTOCOMPLT)
                     .client(client)

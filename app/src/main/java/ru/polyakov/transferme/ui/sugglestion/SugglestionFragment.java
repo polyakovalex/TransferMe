@@ -26,6 +26,7 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.Retrofit;
 import ru.polyakov.transferme.R;
 import ru.polyakov.transferme.adapter.AdapterSugglestion;
 import ru.polyakov.transferme.network.RequestApi;
@@ -42,6 +43,7 @@ public class SugglestionFragment extends Fragment implements SearchView.OnQueryT
     private RecyclerView.LayoutManager layoutManager;
     private ArrayList<Suggestion> sugglestionArrayList = new ArrayList<>();
     private AdapterSugglestion adapterSugglestion;
+    Retrofit retrofit;
     ProgressBar progressBar;
     String v = "V";
 
@@ -65,7 +67,6 @@ public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_sugglestion, container, false);
-
         progressBar = root.findViewById(R.id.progress_bar);
         recyclerView = root.findViewById(R.id.recycleSugglestion);
         layoutManager = new LinearLayoutManager(getContext());
@@ -82,7 +83,7 @@ public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
         sViewModel.getSugglestionRepository().observe(this, suggestion -> {
             List<Suggestion> sugglestionArrayList = suggestion.getSuggestions();
 
-            //suggestions.addAll(sugglestions);
+            sugglestionArrayList.addAll(sugglestionArrayList);
             adapterSugglestion.notifyDataSetChanged();
         });
         //fetchSuggestion(query,v);
