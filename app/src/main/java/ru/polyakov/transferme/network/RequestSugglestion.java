@@ -13,11 +13,11 @@ import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 import ru.polyakov.transferme.util.Const;
 
-public class RequestAutocomplit  {
+public class RequestSugglestion {
 
     private static Retrofit retrofit;
 
-    public static Retrofit getAutoComplit(){
+    public static Retrofit getSugglestion(){
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         OkHttpClient client = new OkHttpClient.Builder().addInterceptor(interceptor).build();

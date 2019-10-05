@@ -10,6 +10,6 @@ import ru.polyakov.transferme.network.dto.Suggestion;
 
 public interface RequestApi {
     @GET("autocomplete?lang=ru&extra=1&limit=5&empty_price=1&request_source=new_front&placefrom=true=V")
-    Call<PrepareQuery> listRepos(@Query("to") String keyboard,@Query("query") String v);
+    Call<PrepareQuery> listSugglestion(@Query("to") String keyboard,@Query("query") String v);
     //Call<PrepareQuery.List<Suggestion>>
 }

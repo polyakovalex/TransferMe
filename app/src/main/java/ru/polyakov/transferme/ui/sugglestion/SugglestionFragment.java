@@ -27,7 +27,7 @@ import retrofit2.Response;
 import ru.polyakov.transferme.R;
 import ru.polyakov.transferme.adapter.AdapterSugglestion;
 import ru.polyakov.transferme.network.RequestApi;
-import ru.polyakov.transferme.network.RequestAutocomplit;
+import ru.polyakov.transferme.network.RequestSugglestion;
 import ru.polyakov.transferme.network.dto.PrepareQuery;
 import ru.polyakov.transferme.network.dto.Suggestion;
 
@@ -108,8 +108,8 @@ public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
     }
 
     public void fetchSuggestion(String query,String v){
-        requestApi = RequestAutocomplit.getAutoComplit().create(RequestApi.class);
-        Call<PrepareQuery> call = requestApi.listRepos(query,v);
+        requestApi = RequestSugglestion.getSugglestion().create(RequestApi.class);
+        Call<PrepareQuery> call = requestApi.listSugglestion(query,v);
 
         call.enqueue(new Callback<PrepareQuery>() {
             @Override
