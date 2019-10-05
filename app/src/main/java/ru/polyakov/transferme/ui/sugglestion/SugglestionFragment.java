@@ -8,6 +8,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -19,6 +20,7 @@ import android.widget.ProgressBar;
 import android.widget.SearchView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -30,21 +32,18 @@ import ru.polyakov.transferme.network.RequestApi;
 import ru.polyakov.transferme.network.RequestSugglestion;
 import ru.polyakov.transferme.network.dto.PrepareQuery;
 import ru.polyakov.transferme.network.dto.Suggestion;
+import ru.polyakov.transferme.repo.SugglestionRepository;
 
 public class SugglestionFragment extends Fragment implements SearchView.OnQueryTextListener {
 
-    private SugglestionViewModel mViewModel;
+    private SugglestionViewModel sViewModel;
     private SearchView searchView;
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
-    private PrepareQuery prepareQuery;
-    private List<Suggestion> suggestions;
-    private AdapterSugglestion adapterAutoComplit;
-    private RequestApi requestApi;
+    private ArrayList<Suggestion> sugglestionArrayList = new ArrayList<>();
+    private AdapterSugglestion adapterSugglestion;
     ProgressBar progressBar;
-    private String query = "Мос";
-    private String v = "V";
-    private SearchManager searchManager;
+    String v = "V";
 
     public static SugglestionFragment newInstance() {
         return new SugglestionFragment();
@@ -68,14 +67,25 @@ public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
         View root = inflater.inflate(R.layout.fragment_sugglestion, container, false);
 
         progressBar = root.findViewById(R.id.progress_bar);
-        recyclerView = root.findViewById(R.id.recycle_sugglestion);
+        recyclerView = root.findViewById(R.id.recycleSugglestion);
         layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
 
         searchView = root.findViewById(R.id.sv_autocomplit);
         searchView.setOnQueryTextListener(this);
-        fetchSuggestion(query,v);
+
+        //adapterSugglestion = new AdapterSugglestion(suggestions,getActivity().getApplicationContext());
+        //recyclerView.setAdapter(adapterSugglestion);
+        sViewModel = ViewModelProviders.of(this).get(SugglestionViewModel.class);
+        sViewModel.init();
+        sViewModel.getSugglestionRepository().observe(this, suggestion -> {
+            List<Suggestion> sugglestionArrayList = suggestion.getSuggestions();
+
+            //suggestions.addAll(sugglestions);
+            adapterSugglestion.notifyDataSetChanged();
+        });
+        //fetchSuggestion(query,v);
 
        /* searchManager = (SearchManager) getActivity().getSystemService(getActivity().getApplicationContext().SEARCH_SERVICE);
         searchView = root.findViewById(R.id.sv_autocomplit);
@@ -83,13 +93,26 @@ public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
         searchView.setSearchableInfo(searchManager.getSearchableInfo(getActivity().getComponentName()));
         searchView.setOnQueryTextListener(this);*/
 
+        setupRecyclerView();
         return root;
+    }
+
+    private void setupRecyclerView() {
+        if (adapterSugglestion == null) {
+            adapterSugglestion = new AdapterSugglestion(sugglestionArrayList, getActivity().getApplicationContext());
+            recyclerView.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext()));
+            recyclerView.setAdapter(adapterSugglestion);
+            recyclerView.setItemAnimator(new DefaultItemAnimator());
+            recyclerView.setNestedScrollingEnabled(true);
+        } else {
+            adapterSugglestion.notifyDataSetChanged();
+        }
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = ViewModelProviders.of(this).get(SugglestionViewModel.class);
+       // mViewModel = ViewModelProviders.of(this).get(SugglestionViewModel.class);
         // TODO: Use the ViewModel
     }
 
@@ -108,6 +131,15 @@ public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
     }
 
     public void fetchSuggestion(String query,String v){
+
+        //mViewModel.getSugglestion();
+                /*adapterAutoComplit = new AdapterSugglestion(suggestions, getActivity().getApplicationContext());
+                recyclerView.setAdapter(adapterAutoComplit);
+                adapterAutoComplit.notifyDataSetChanged();*/
+
+
+            }
+   /* public void fetchSuggestion(String query,String v){
         requestApi = RequestSugglestion.getSugglestion().create(RequestApi.class);
         Call<PrepareQuery> call = requestApi.listSugglestion(query,v);
 
@@ -130,5 +162,5 @@ public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                 Toast.makeText(getActivity().getApplicationContext(),"Error request "+t.toString(),Toast.LENGTH_LONG).show();
             }
         });
-    }
+    }*/
 }

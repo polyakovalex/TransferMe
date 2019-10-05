@@ -46,4 +46,8 @@ public class RequestSugglestion {
         return retrofit;
 
     };
+
+    public static <S> S cteateService(Class<S> serviceClass) {
+        return retrofit.create(serviceClass);
+    }
 }

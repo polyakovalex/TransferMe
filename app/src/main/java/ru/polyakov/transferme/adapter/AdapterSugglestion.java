@@ -54,6 +54,9 @@ public class AdapterSugglestion extends RecyclerView.Adapter<AdapterSugglestion.
 
     @Override
     public int getItemCount() {
+        if (suggestions == null){
+            return 0;
+        }
         return suggestions.size();
     }
 

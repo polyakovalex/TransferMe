@@ -1,27 +1,28 @@
 package ru.polyakov.transferme.ui.sugglestion;
 
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import java.util.List;
+
+import ru.polyakov.transferme.network.dto.PrepareQuery;
+import ru.polyakov.transferme.repo.SugglestionRepository;
+
 public class SugglestionViewModel extends ViewModel {
-   // private MutableLiveData<List<suggestion>> mText;
+    private MutableLiveData<PrepareQuery> mutableLiveData;
+    private SugglestionRepository sugglestionRepository;
 
-    public SugglestionViewModel() {
+    public void init(){
+        if (mutableLiveData != null){
+            return;
+        }
+        sugglestionRepository = SugglestionRepository.getInstance();
+        mutableLiveData = sugglestionRepository.getSuggl("Ve","V");
+
     }
 
-
-  /*
-
-    public SugglestionViewModel() {
-        mText = new MutableLiveData<>();
-        mText.setValue("This is home fragment");
+    public LiveData<PrepareQuery> getSugglestionRepository() {
+        return mutableLiveData;
     }
-
-    @Override
-    protected void onCleared() {
-        super.onCleared();
-    }
-
-    public LiveData<String> getText() {
-        return mText;
-    }*/
 }
