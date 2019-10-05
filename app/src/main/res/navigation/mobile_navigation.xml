@@ -24,7 +24,7 @@
         tools:layout="@layout/fragment_notifications" />
     <fragment
         android:id="@+id/autoComplitFragment"
-        android:name="ru.polyakov.transferme.ui.autocomplit.SugglestionFragment"
+        android:name="ru.polyakov.transferme.ui.sugglestion.SugglestionFragment"
         android:label="Поиск"
         tools:layout="@layout/fragment_sugglestion" >
         <action

@@ -1,24 +1,15 @@
-package ru.polyakov.transferme.ui.autocomplit;
+package ru.polyakov.transferme.ui.sugglestion;
 
-import android.util.Log;
-
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import ru.polyakov.transferme.ui.home.HomeViewModel;
-
 public class SugglestionViewModel extends ViewModel {
+   // private MutableLiveData<List<suggestion>> mText;
+
     public SugglestionViewModel() {
     }
 
 
-    public void onClickComplit (HomeViewModel homeViewModel){
-
-        Log.d("df","dfdf");
-    }
-
-  /*  private MutableLiveData<String> mText;
+  /*
 
     public SugglestionViewModel() {
         mText = new MutableLiveData<>();

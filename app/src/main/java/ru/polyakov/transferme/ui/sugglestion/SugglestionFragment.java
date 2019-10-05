@@ -1,4 +1,4 @@
-package ru.polyakov.transferme.ui.autocomplit;
+package ru.polyakov.transferme.ui.sugglestion;
 
 import androidx.lifecycle.ViewModelProviders;
 
