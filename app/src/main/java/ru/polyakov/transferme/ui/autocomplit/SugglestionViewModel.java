@@ -8,8 +8,8 @@ import androidx.lifecycle.ViewModel;
 
 import ru.polyakov.transferme.ui.home.HomeViewModel;
 
-public class AutoComplitViewModel extends ViewModel {
-    public AutoComplitViewModel() {
+public class SugglestionViewModel extends ViewModel {
+    public SugglestionViewModel() {
     }
 
 
@@ -20,7 +20,7 @@ public class AutoComplitViewModel extends ViewModel {
 
   /*  private MutableLiveData<String> mText;
 
-    public AutoComplitViewModel() {
+    public SugglestionViewModel() {
         mText = new MutableLiveData<>();
         mText.setValue("This is home fragment");
     }

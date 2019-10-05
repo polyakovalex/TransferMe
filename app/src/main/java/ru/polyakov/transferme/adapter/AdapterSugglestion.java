@@ -4,23 +4,21 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-import ru.polyakov.transferme.R;
-import ru.polyakov.transferme.databinding.ItemAutocomplitBinding;
+import ru.polyakov.transferme.databinding.ItemSugglestionBinding;
 import ru.polyakov.transferme.network.dto.Suggestion;
 
-public class AdapterAutoComplit extends RecyclerView.Adapter<AdapterAutoComplit.MyViewHolderAutoComplit> {
+public class AdapterSugglestion extends RecyclerView.Adapter<AdapterSugglestion.MyViewHolderAutoComplit> {
 
     private List<Suggestion> suggestions;
     private Context context;
 
-    public AdapterAutoComplit(List<Suggestion> suggestions, Context context) {
+    public AdapterSugglestion(List<Suggestion> suggestions, Context context) {
         this.suggestions = suggestions;
         this.context = context;
     }
@@ -30,7 +28,7 @@ public class AdapterAutoComplit extends RecyclerView.Adapter<AdapterAutoComplit.
 
      @Override
     public MyViewHolderAutoComplit onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_autocomplit,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_sugglestion,parent,false);
         return new MyViewHolderAutoComplit(view);
     }
      */
@@ -38,7 +36,7 @@ public class AdapterAutoComplit extends RecyclerView.Adapter<AdapterAutoComplit.
     @Override
     public MyViewHolderAutoComplit onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        ItemAutocomplitBinding binding = ItemAutocomplitBinding.inflate(inflater,parent,false);
+        ItemSugglestionBinding binding = ItemSugglestionBinding.inflate(inflater,parent,false);
         return  new MyViewHolderAutoComplit(binding.getRoot());
 
     }
@@ -69,7 +67,7 @@ public class AdapterAutoComplit extends RecyclerView.Adapter<AdapterAutoComplit.
     }*/
 
     public static class MyViewHolderAutoComplit extends RecyclerView.ViewHolder{
-        ItemAutocomplitBinding binding;
+        ItemSugglestionBinding binding;
 
         public MyViewHolderAutoComplit(View itemView) {
             super(itemView);

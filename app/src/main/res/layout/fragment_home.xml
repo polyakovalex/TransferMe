@@ -10,7 +10,7 @@
             type="ru.polyakov.transferme.ui.home.HomeViewModel" />
         <variable
             name="autoComplitViewModel"
-            type="ru.polyakov.transferme.ui.autocomplit.AutoComplitViewModel" />
+            type="ru.polyakov.transferme.ui.autocomplit.SugglestionViewModel" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
