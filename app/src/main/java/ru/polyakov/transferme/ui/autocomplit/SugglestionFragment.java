@@ -68,7 +68,7 @@ public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
         View root = inflater.inflate(R.layout.fragment_sugglestion, container, false);
 
         progressBar = root.findViewById(R.id.progress_bar);
-        recyclerView = root.findViewById(R.id.recycle_autocomplit);
+        recyclerView = root.findViewById(R.id.recycle_sugglestion);
         layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
