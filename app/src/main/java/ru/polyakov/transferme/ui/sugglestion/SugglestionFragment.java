@@ -1,5 +1,6 @@
 package ru.polyakov.transferme.ui.sugglestion;
 
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.app.SearchManager;
@@ -80,12 +81,22 @@ public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
         //recyclerView.setAdapter(adapterSugglestion);
         sViewModel = ViewModelProviders.of(this).get(SugglestionViewModel.class);
         sViewModel.init();
-        sViewModel.getSugglestionRepository().observe(this, suggestion -> {
+       /* sViewModel.getSugglestionRepository().observe(this, suggestion -> {
             List<Suggestion> sugglestionArrayList = suggestion.getSuggestions();
 
             sugglestionArrayList.addAll(sugglestionArrayList);
             adapterSugglestion.notifyDataSetChanged();
-        });
+        });*/
+       sViewModel.getSugglestionRepository().observe(
+               this, new Observer<PrepareQuery>() {
+           @Override
+           public void onChanged(PrepareQuery prepareQuery) {
+              /* List<Suggestion> sugglestionArrayList = adapterSugglestion.;
+
+               sugglestionArrayList.addAll(sugglestionArrayList);
+              */ adapterSugglestion.notifyDataSetChanged();
+           }
+       });
         //fetchSuggestion(query,v);
 
        /* searchManager = (SearchManager) getActivity().getSystemService(getActivity().getApplicationContext().SEARCH_SERVICE);
